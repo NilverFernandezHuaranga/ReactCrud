@@ -1,6 +1,6 @@
 import React from "react";
 import logo from "./logo.svg";
-import "./App.css";
+import "./App.css"; // Aquí se carga el CSS actualizado
 import "bootstrap/dist/css/bootstrap.min.css";
 import {
   Table,
@@ -59,7 +59,7 @@ class App extends React.Component {
     var contador = 0;
     var arreglo = this.state.data;
     arreglo.map((registro) => {
-      if (dato.id == registro.id) {
+      if (dato.id === registro.id) {
         arreglo[contador].personaje = dato.personaje;
         arreglo[contador].anime = dato.anime;
       }
@@ -69,12 +69,12 @@ class App extends React.Component {
   };
 
   eliminar = (dato) => {
-    var opcion = window.confirm("Estás Seguro que deseas Eliminar el elemento "+dato.id);
-    if (opcion == true) {
+    var opcion = window.confirm("¿Estás seguro que deseas eliminar el elemento " + dato.id + "?");
+    if (opcion === true) {
       var contador = 0;
       var arreglo = this.state.data;
       arreglo.map((registro) => {
-        if (dato.id == registro.id) {
+        if (dato.id === registro.id) {
           arreglo.splice(contador, 1);
         }
         contador++;
@@ -83,10 +83,10 @@ class App extends React.Component {
     }
   };
 
-  insertar= ()=>{
-    var valorNuevo= {...this.state.form};
-    valorNuevo.id=this.state.data.length+1;
-    var lista= this.state.data;
+  insertar = () => {
+    var valorNuevo = { ...this.state.form };
+    valorNuevo.id = this.state.data.length + 1;
+    var lista = this.state.data;
     lista.push(valorNuevo);
     this.setState({ modalInsertar: false, data: lista });
   }
@@ -101,16 +101,21 @@ class App extends React.Component {
   };
 
   render() {
-    
     return (
       <>
         <Container>
-        <br />
-          <Button color="success" onClick={()=>this.mostrarModalInsertar()}>Crear</Button>
+          <br />
+          <Button 
+            color="success" 
+            onClick={() => this.mostrarModalInsertar()} 
+            className="button-crear"
+          >
+            Crear
+          </Button>
           <br />
           <br />
-          <Table>
-            <thead>
+          <Table responsive bordered hover className="table-personajes">
+            <thead className="thead-dark">
               <tr>
                 <th>ID</th>
                 <th>Personaje</th>
@@ -118,7 +123,6 @@ class App extends React.Component {
                 <th>Acción</th>
               </tr>
             </thead>
-
             <tbody>
               {this.state.data.map((dato) => (
                 <tr key={dato.id}>
@@ -129,10 +133,17 @@ class App extends React.Component {
                     <Button
                       color="primary"
                       onClick={() => this.mostrarModalActualizar(dato)}
+                      className="btn-editar"
                     >
                       Editar
                     </Button>{" "}
-                    <Button color="danger" onClick={()=> this.eliminar(dato)}>Eliminar</Button>
+                    <Button
+                      color="danger"
+                      onClick={() => this.eliminar(dato)}
+                      className="btn-eliminar"
+                    >
+                      Eliminar
+                    </Button>
                   </td>
                 </tr>
               ))}
@@ -142,15 +153,12 @@ class App extends React.Component {
 
         <Modal isOpen={this.state.modalActualizar}>
           <ModalHeader>
-           <div><h3>Editar Registro</h3></div>
+            <div><h3>Editar Registro</h3></div>
           </ModalHeader>
 
           <ModalBody>
             <FormGroup>
-              <label>
-               Id:
-              </label>
-            
+              <label>Id:</label>
               <input
                 className="form-control"
                 readOnly
@@ -158,11 +166,9 @@ class App extends React.Component {
                 value={this.state.form.id}
               />
             </FormGroup>
-            
+
             <FormGroup>
-              <label>
-                Personaje: 
-              </label>
+              <label>Personaje:</label>
               <input
                 className="form-control"
                 name="personaje"
@@ -171,11 +177,9 @@ class App extends React.Component {
                 value={this.state.form.personaje}
               />
             </FormGroup>
-            
+
             <FormGroup>
-              <label>
-                Anime: 
-              </label>
+              <label>Anime:</label>
               <input
                 className="form-control"
                 name="anime"
@@ -202,31 +206,24 @@ class App extends React.Component {
           </ModalFooter>
         </Modal>
 
-
-
         <Modal isOpen={this.state.modalInsertar}>
           <ModalHeader>
-           <div><h3>Insertar Personaje</h3></div>
+            <div><h3>Insertar Personaje</h3></div>
           </ModalHeader>
 
           <ModalBody>
             <FormGroup>
-              <label>
-                Id: 
-              </label>
-              
+              <label>Id:</label>
               <input
                 className="form-control"
                 readOnly
                 type="text"
-                value={this.state.data.length+1}
+                value={this.state.data.length + 1}
               />
             </FormGroup>
-            
+
             <FormGroup>
-              <label>
-                Personaje: 
-              </label>
+              <label>Personaje:</label>
               <input
                 className="form-control"
                 name="personaje"
@@ -234,11 +231,9 @@ class App extends React.Component {
                 onChange={this.handleChange}
               />
             </FormGroup>
-            
+
             <FormGroup>
-              <label>
-                Anime: 
-              </label>
+              <label>Anime:</label>
               <input
                 className="form-control"
                 name="anime"
@@ -267,4 +262,5 @@ class App extends React.Component {
     );
   }
 }
+
 export default App;

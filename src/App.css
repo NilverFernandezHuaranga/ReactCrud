@@ -1,38 +1,135 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+/* ======== Base ======== */
+body {
+  background-color: #f4f6f8;
   min-height: 100vh;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  color: #333;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding: 2rem;
 }
 
-.App-link {
-  color: #61dafb;
+/* ======== Contenedor Principal ======== */
+.Container {
+  width: 100%;
+  max-width: 1200px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* ======== Tabla ======== */
+.Table {
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Cabecera de la tabla */
+thead {
+  background-color: #1e3a8a; /* Azul corporativo */
+  color: #ffffff;
+}
+
+/* Celdas */
+th, td {
+  text-align: center;
+  vertical-align: middle;
+  padding: 1rem;
+}
+
+/* Filas del cuerpo */
+tbody tr {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+tbody tr:hover {
+  background-color: #f1f5f9;
+}
+
+/* ======== Botones ======== */
+.btn-success, .btn-primary, .btn-danger {
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+  border: none;
+  transition: background-color 0.3s ease;
+  font-size: 0.95rem;
+}
+
+/* Botón verde */
+.btn-success {
+  background-color: #198754;
+  color: #ffffff;
+}
+
+.btn-success:hover {
+  background-color: #157347;
+}
+
+/* Botón azul */
+.btn-primary {
+  background-color: #0d6efd;
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background-color: #0b5ed7;
+}
+
+/* Botón rojo */
+.btn-danger {
+  background-color: #dc3545;
+  color: #ffffff;
+}
+
+.btn-danger:hover {
+  background-color: #bb2d3b;
+}
+
+/* ======== Modal ======== */
+.modal-content {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Encabezado del modal */
+.modal-header h3 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #1e293b;
+}
+
+/* Inputs */
+input.form-control {
+  border-radius: 8px;
+  padding: 0.6rem;
+  margin-bottom: 1rem;
+  border: 1px solid #cbd5e1;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+input.form-control:focus {
+  border-color: #1e3a8a;
+  outline: none;
+}
+
+/* ======== Botón Crear ======== */
+.button-crear {
+  margin-bottom: 2rem;
+  background-color: #1e3a8a;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem 2rem;
+  font-weight: 600;
+  font-size: 1rem;
+  box-shadow: 0 6px 16px rgba(30, 58, 138, 0.3);
+  transition: background-color 0.3s ease;
+}
+
+.button-crear:hover {
+  background-color: #17307c;
 }
